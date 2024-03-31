@@ -332,6 +332,8 @@ def getArgs(argv=None):
 
 
 if __name__ == '__main__':
+    print("Program Start")
+
     myCam, myExp, myGain, marker = getArgs()   # Read command line inputs
     livestream(myCam, myExp, myGain, marker)   # Start livestream
 

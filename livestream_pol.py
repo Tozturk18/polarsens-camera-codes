@@ -162,7 +162,8 @@ def livestream(gain, markNL):
     dcmap = copy(plt.cm.viridis)
     dnorm = ImageNormalize(res, interval=ManualInterval(0, 100),
                      stretch=LinearStretch())
-    im0 = axes[0].imshow(res, origin='upper', norm=dnorm, cmap=dcmap)
+    #im0 = axes[0].imshow(res, origin='upper', norm=dnorm, cmap=dcmap)
+    im0 = axes[0].imshow(res, origin='upper', cmap=dcmap)
     cbar0 = fig.colorbar(im0, cax=cbar_ax0)
     cbar0.set_label('DoLP (percent)')
 
@@ -200,11 +201,14 @@ def livestream(gain, markNL):
                         shape=(item.height, item.width))
 
                 # Compute D/AoLP 
-                S0, S1, S2 = getHalfResStokesFromFullResImage(nparray)
+                '''S0, S1, S2 = getHalfResStokesFromFullResImage(nparray)
                 res = getDolpFromStokes(S0, S1, S2)
                 im0.set_data(res)
                 res = getAolpFromStokes(S0, S1, S2)
-                im1.set_data(res)
+                im1.set_data(res)'''
+                
+                im1.set_data(nparray)
+                im1.set_data(nparray)
 
                 plt.show(block=False)
                 plt.pause(1e-2)
